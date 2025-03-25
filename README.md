@@ -197,7 +197,7 @@ crontab -e
 ```
 添加
 ```bash
-0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 >> /home/[user]/rclone_alist/sync.log 2>&1
+0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 --webdav-pacer-min-sleep 100ms --local-unicode-normalization>> /home/[user]/rclone_alist/sync.log 2>&1
 ```
 ### nextcloud-all-in-one局域网部署
 文档
@@ -290,5 +290,25 @@ nano /home/[user]/rclone/include-file.txt
 ```
 执行
 ```
-rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt
+rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt --webdav-pacer-min-sleep 100ms --local-unicode-normalization
+```
+
+### Rclone文件名特殊符号问题
+文档
+- https://www.reddit.com/r/rclone/comments/jeigft/it_seems_like_rclone_cant_handle_a_filename_with/
+- https://rclone.org/local/#filenames
+- https://rclone.org/onedrive/#restricted-filename-characters
+- https://rclone.org/overview/#encoding
+- https://rclone.org/local/#local-unicode-normalization
+
+
+在命令`rclone sync`中添加flag
+```
+--local-unicode-normalization
+```
+
+### Rclone避免频繁访问
+在命令`rclone sync`中添加flag
+```
+--webdav-pacer-min-sleep 100ms
 ```
