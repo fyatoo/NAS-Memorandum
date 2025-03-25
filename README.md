@@ -199,3 +199,96 @@ crontab -e
 ```bash
 0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 >> /home/[user]/rclone_alist/sync.log 2>&1
 ```
+### nextcloud-all-in-one局域网部署
+文档
+- https://github.com/nextcloud/all-in-one/discussions/5439
+- https://github.com/nextcloud/all-in-one/blob/main/local-instance.md
+
+
+### immich
+文档
+- https://github.com/immich-app/immich/issues/6616
+
+### 利用Rclone和Alist将百度网盘中所有图片保存到本地
+文档
+- https://rclone.org/filtering/
+- https://immich.app/docs/features/supported-formats
+- https://rclone.org/commands/rclone_sync/
+
+
+```bash
+nano /home/[user]/rclone/include-file.txt
+```
+填入
+```
+*.3fr
+*.ari
+*.arw
+*.cap
+*.cin
+*.cr2
+*.cr3
+*.crw
+*.dcr
+*.dng
+*.erf
+*.fff
+*.iiq
+*.k25
+*.kdc
+*.mrw
+*.nef
+*.nrw
+*.orf
+*.ori
+*.pef
+*.psd
+*.raf
+*.raw
+*.rw2
+*.rwl
+*.sr2
+*.srf
+*.srw
+*.x3f
+*.avif
+*.bmp
+*.gif
+*.heic
+*.heif
+*.hif
+*.insp
+*.jp2
+*.jpe
+*.jpeg
+*.jpg
+*.jxl
+*.png
+*.svg
+*.tif
+*.tiff
+*.webp
+*.3gp
+*.3gpp
+*.avi
+*.flv
+*.insv
+*.m2t
+*.m2ts
+*.m4v
+*.mkv
+*.mov
+*.mp4
+*.mpe
+*.mpeg
+*.mpg
+*.mts
+*.vob
+*.webm
+*.wmv
+*.xmp
+```
+执行
+```
+rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt
+```
