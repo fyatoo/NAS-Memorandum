@@ -197,7 +197,7 @@ crontab -e
 ```
 添加
 ```bash
-0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 --webdav-pacer-min-sleep 100ms --local-unicode-normalization>> /home/[user]/rclone_alist/sync.log 2>&1
+0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 --webdav-pacer-min-sleep 100ms --webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization >> /home/[user]/rclone_alist/sync.log 2>&1
 ```
 ### nextcloud-all-in-one局域网部署
 文档
@@ -290,7 +290,7 @@ nano /home/[user]/rclone/include-file.txt
 ```
 执行
 ```
-rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt --webdav-pacer-min-sleep 100ms --local-unicode-normalization
+rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt --webdav-pacer-min-sleep 100ms --webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,Dot,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization
 ```
 
 ### Rclone文件名特殊符号问题
@@ -304,7 +304,7 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 
 在命令`rclone sync`中添加flag
 ```
---local-unicode-normalization
+--webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,Dot,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization
 ```
 
 ### Rclone避免频繁访问
