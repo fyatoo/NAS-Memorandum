@@ -208,6 +208,20 @@ crontab -e
 ### immich
 文档
 - https://github.com/immich-app/immich/issues/6616
+- https://wiki.slarker.me/unraid/immich_ai_model.html
+- https://huggingface.co/immich-app/XLM-Roberta-Large-Vit-B-16Plus/tree/main
+
+安装git-lfs
+- https://git-lfs.com
+```bash
+sudo apt install git-lfs 
+```
+下载模型
+```bash
+cd /var/lib/docker/volumes/immich_model-cache/_data/clip
+git lfs install
+git clone https://huggingface.co/immich-app/XLM-Roberta-Large-Vit-B-16Plus
+```
 
 ### 利用Rclone和Alist将百度网盘中所有图片保存到本地
 文档
