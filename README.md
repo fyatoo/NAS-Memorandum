@@ -326,3 +326,7 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 ```
 --webdav-pacer-min-sleep 100ms
 ```
+
+### jellyfin添加中文字体
+将windows的`C:\Windows\Fonts\simhei.ttf`复制到jellyfin的某个目录下
+在设置里设置启用备用字体
