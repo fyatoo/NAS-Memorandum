@@ -197,7 +197,7 @@ crontab -e
 ```
 添加
 ```bash
-0 5 * * * rclone sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 --webdav-pacer-min-sleep 100ms --webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization >> /home/[user]/rclone_alist/sync.log 2>&1
+0 5 * * * rclone --config /home/[user]/rclone/rclone.conf sync -P --bwlimit 10m /mnt/Important alist:/Crypt --checkers 1 --transfers 1 --webdav-pacer-min-sleep 100ms --webdav-encoding "" --timeout 120m --exclude=/.duplicacy/** --no-update-dir-modtime --no-update-modtime --fast-list >> /home/[user]/rclone_alist/sync.log 2>&1
 ```
 ### nextcloud-all-in-one局域网部署
 文档
@@ -320,6 +320,11 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 ```
 --webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,Dot,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization
 ```
+上述不对
+仅需添加
+```
+--webdav-encoding ""
+```
 
 ### Rclone避免频繁访问
 在命令`rclone sync`中添加flag
@@ -332,4 +337,9 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 在设置里设置启用备用字体
 
 ### fix back101v1.0
-- `--vfs-cache-mode full --multi-thread-streams 4 --buffer-size 8192M --vfs-fast-fingerprint --no-modtime --file-perms 0700 --copy-links --umask 000`
+- `rclone-mount.service`中添加cache
+    - `--vfs-cache-mode full --multi-thread-streams 4 --buffer-size 512M`
+    - 延迟运行，在`[Unit]`中`After=local-fs.target network.target`
+    - 延迟运行，在`[Service]`中`ExecStartPre=/bin/sleep 10`
+    - `sudo systemctl daemon-reload`
+- `rclone sync`添加`--webdav-encoding "" --timeout 120m --exclude=/.duplicacy/** --no-update-dir-modtime --no-update-modtime --fast-list`
