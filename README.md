@@ -330,3 +330,6 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 ### jellyfin添加中文字体
 将windows的`C:\Windows\Fonts\simhei.ttf`复制到jellyfin的某个目录下
 在设置里设置启用备用字体
+
+### fix back101v1.0
+- `--vfs-cache-mode writes`
