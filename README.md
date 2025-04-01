@@ -343,3 +343,9 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
     - 延迟运行，在`[Service]`中`ExecStartPre=/bin/sleep 10`
     - `sudo systemctl daemon-reload`
 - `rclone sync`添加`--webdav-encoding "" --timeout 120m --exclude=/.duplicacy/** --no-update-dir-modtime --no-update-modtime --fast-list`
+
+### 搜索并提取iso中的文件
+```bash
+7z l my.iso | grep '*'
+7z e my.iso dir/to_be_extracted.txt -o/home/extracted
+```
