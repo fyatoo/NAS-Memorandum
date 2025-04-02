@@ -349,3 +349,44 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 7z l my.iso | grep '*'
 7z e my.iso dir/to_be_extracted.txt -o/home/extracted
 ```
+
+
+### KopiaCli
+
+文档
+- https://kopia.io/docs/getting-started/#kopia-cli
+- https://kopia.io/docs/reference/command-line/
+
+
+安装
+```bash
+mkdir /home/[user]/kopia-cli
+cd /home/[user]/kopia-cli
+wget https://github.com/kopia/kopia/releases/download/v0.19.0/kopia-0.19.0-linux-x64.tar.gz
+tar -xzvf kopia-0.19.0-linux-x64.tar.gz
+```
+
+创建仓库
+```bash
+kopia repository create webdav --url=... --webdav-password=... --webdav-username=...
+```
+设置缓存位置
+```bash
+kopia cache set --cache-directory=/mnt/Trivial/kopia_cache
+```
+连接仓库
+```bash
+kopia repository connect webdav --url=... --webdav-password=... --webdav-username=...
+```
+创建快照
+```bash
+kopia snapshot create /mnt/Important
+```
+查看已有快照
+```bash
+kopia snapshot list /mnt/Important
+```
+检查快照
+```bash
+kopia snapshot verify --verify-files-percent=5.0 
+```
