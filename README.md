@@ -360,6 +360,11 @@ mkdir /home/[user]/kopia-cli
 cd /home/[user]/kopia-cli
 wget https://github.com/kopia/kopia/releases/download/v0.19.0/kopia-0.19.0-linux-x64.tar.gz
 tar -xzvf kopia-0.19.0-linux-x64.tar.gz
+cd kopia-0.19.0-linux-x64
+
+sudo cp kopia /usr/bin/
+sudo chown root:root /usr/bin/kopia
+sudo chmod 755 /usr/bin/kopia
 ```
 
 创建仓库
