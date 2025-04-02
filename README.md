@@ -336,13 +336,9 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 将windows的`C:\Windows\Fonts\simhei.ttf`复制到jellyfin的某个目录下
 在设置里设置启用备用字体
 
-### fix back101v1.0
-- `rclone-mount.service`中添加cache
-    - `--vfs-cache-mode full --multi-thread-streams 4 --buffer-size 512M`
-    - 延迟运行，在`[Unit]`中`After=local-fs.target network.target`
-    - 延迟运行，在`[Service]`中`ExecStartPre=/bin/sleep 10`
-    - `sudo systemctl daemon-reload`
-- `rclone sync`添加`--webdav-encoding "" --timeout 120m --exclude=/.duplicacy/** --no-update-dir-modtime --no-update-modtime --fast-list`
+### fix back101v1.1
+- `rclone-mount.service`中添加
+    - `--transfers 4 --buffer-size 128M`
 
 ### 搜索并提取iso中的文件
 ```bash
