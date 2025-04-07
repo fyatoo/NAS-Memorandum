@@ -338,7 +338,7 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 
 ### fix back101v1.1
 - `rclone-mount.service`中添加
-    - `--vfs-cache-max-size 15GB`
+    - `--vfs-cache-max-size 15G`
 
 ### 搜索并提取iso中的文件
 ```bash
