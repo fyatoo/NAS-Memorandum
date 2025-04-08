@@ -138,7 +138,7 @@ mv duplicacy_linux_x64_3.2.4 duplicacy
 初始化
 ```bash
 cd /mnt/Important
-/home/[user]/duplicacy/duplicacy init -encrypt -erasure-coding 5:2  ImportantBackup /mnt/pan/duplicacy_repo
+/home/[user]/duplicacy/duplicacy init -encrypt -chunk-size 512M -erasure-coding 5:2  ImportantBackup /mnt/pan/duplicacy_repo
 ```
 备份
 ```bash
