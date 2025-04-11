@@ -304,7 +304,7 @@ nano /home/[user]/rclone/include-file.txt
 ```
 执行
 ```
-rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 1 --transfers 1 --include-from /home/[user]/rclone/include-file.txt --webdav-pacer-min-sleep 100ms --webdav-encoding "Asterisk,BackQuote,BackSlash,Colon,CrLf,Ctl,Del,Dollar,Dot,DoubleQuote,Exclamation,Hash,InvalidUtf8,LeftCrLfHtVt,LeftPeriod,LeftSpace,LeftTilde,LtGt,None,Percent,Pipe,Question,RightCrLfHtVt,RightPeriod,RightSpace,Semicolon,SingleQuote,Slash,SquareBracket" --local-unicode-normalization
+rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 4 --transfers 1 --webdav-pacer-min-sleep 300ms --webdav-encoding "" --timeout 120m --no-update-dir-modtime --no-update-modtime --fast-list --include-from /home/[user]/rclone/include-file.txt
 ```
 
 ### Rclone文件名特殊符号问题
