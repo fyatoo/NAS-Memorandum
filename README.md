@@ -304,7 +304,7 @@ nano /home/[user]/rclone/include-file.txt
 ```
 执行
 ```
-rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important --checkers 4 --transfers 1 --webdav-pacer-min-sleep 300ms --webdav-encoding "" --timeout 120m --no-update-dir-modtime --no-update-modtime --fast-list --include-from /home/[user]/rclone/include-file.txt
+rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:/cloud /mnt/Important/From_Baidu --checkers 4 --transfers 1 --webdav-pacer-min-sleep 300ms --webdav-encoding "" --timeout 120m --no-update-dir-modtime --no-update-modtime --fast-list --include-from /home/[user]/rclone/include-file.txt
 ```
 
 ### Rclone文件名特殊符号问题
