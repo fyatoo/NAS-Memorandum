@@ -104,7 +104,7 @@ rclone config --config /home/[user]/rclone/rclone.conf
     [Service]
     Type=simple
     User=[user]
-    ExecStart=rclone --config /home/[user]/rclone/rclone.conf mount pan:/ /mnt/pan --vfs-cache-mode off --cache-dir /mnt/Trivial/rclone_cache
+    ExecStart=rclone --config /home/[user]/rclone/rclone.conf mount pan:/ /mnt/pan --vfs-cache-mode minimal --vfs-cache-max-size 15G  --cache-dir /mnt/Trivial/rclone_cache
     Restart=on-failure
     RestartSec=5s
 
