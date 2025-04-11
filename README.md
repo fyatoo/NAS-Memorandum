@@ -336,9 +336,6 @@ rclone --config /home/[user]/rclone/rclone.conf sync --progress --dry-run alist:
 将windows的`C:\Windows\Fonts\simhei.ttf`复制到jellyfin的某个目录下
 在设置里设置启用备用字体
 
-### fix back101v1.1
-- `rclone-mount.service`中添加
-    - `--vfs-cache-max-size 15G`
 
 ### 搜索并提取iso中的文件
 ```bash
