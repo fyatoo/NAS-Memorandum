@@ -394,7 +394,7 @@ kopia snapshot verify --verify-files-percent=5.0
 - 重新生成一个新id快照，其他配置不变
     ```bash
     cd /mnt/Important
-    /home/[user]/duplicacy/duplicacy init -encrypt -chunk-size 512M -erasure-coding 5:2  ImportantBackup_tmp /mnt/pan/duplicacy_repo
+    /home/[user]/duplicacy/duplicacy init -encrypt -chunk-size 32M -erasure-coding 5:2  ImportantBackup_tmp /mnt/pan/duplicacy_repo
     ```
 - 执行备份
     ```bash
