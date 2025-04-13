@@ -388,3 +388,17 @@ kopia snapshot list /mnt/Important
 ```bash
 kopia snapshot verify --verify-files-percent=5.0 
 ```
+
+### 修复Duplicacy丢失块
+- 备份`.dupilicacy`文件夹
+- 重新生成一个新id快照，其他配置不变
+    ```bash
+    cd /mnt/Important
+    /home/[user]/duplicacy/duplicacy init -encrypt -chunk-size 512M -erasure-coding 5:2  ImportantBackup_tmp /mnt/pan/duplicacy_repo
+    ```
+- 执行备份
+    ```bash
+    cd /mnt/Important
+    /home/[user]/duplicacy/duplicacy backup -stats -threads 1 -limit-rate 10000
+    ```
+- 删除当前`.dupilicacy`，复制原本`.dupilicacy`
